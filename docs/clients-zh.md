@@ -378,6 +378,12 @@ strongswan down myvpn
   REG ADD HKLM\SYSTEM\CurrentControlSet\Services\IPSec /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 0x2 /f
   ```
 
+另外，某些个别的 Windows 系统禁用了 IPsec 加密，此时也会导致连接失败。要重新启用它，可以运行以下命令并重启计算机。
+
+```console
+REG ADD HKLM\SYSTEM\CurrentControlSet\Services\RasMan\Parameters /v ProhibitIpSec /t REG_DWORD /d 0x0 /f
+```
+
 ### Windows 错误 628
 
 > 在连接完成前，连接被远程计算机终止。
